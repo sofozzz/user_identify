@@ -8,8 +8,6 @@ def prepare_train_set(path_to_csv_files, session_length=10):
     site_freq = {} # создаем пустой словарь
     
     list_sessions = []
-    
-    session_id = 1
 
     for userfile in tqdm(glob(os.path.join(path_to_csv_files, '*.csv'))): # обходим все файлы в каталоге с расшарением .csv
 
@@ -25,7 +23,6 @@ def prepare_train_set(path_to_csv_files, session_length=10):
 
         for sindex in range(count_session):
             sessions = []
-            session_id += 1
             for index in range(sindex * session_length, sindex * session_length + session_length):
                 if index < len(sites):
                     sessions.append(site_freq[sites[index]][0])
