@@ -11,7 +11,7 @@ def prepare_train_set(path_to_csv_files, session_length=10):
 
     for userfile in tqdm(glob(os.path.join(path_to_csv_files, '*.csv'))): # обходим все файлы в каталоге с расшарением .csv
 
-        sites = pd.read_csv(userfile).site # читаем названия сайтов из файла
+        sites = pd.read_csv(userfile).site.values # читаем названия сайтов из файла
         
         for site in sites:
             if site not in site_freq: # проверяем наличие сайта в частотном словаре
