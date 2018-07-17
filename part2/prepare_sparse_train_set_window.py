@@ -7,7 +7,7 @@ def prepare_sparse_train_set_window(path_to_csv_files, site_freq_path, session_l
     with (open(site_freq_path, 'rb')) as file:
         site_freq = pickle.load(file)
         
-    next_user_id = 1
+    user_id = 1
 
     users = []
     rows = []
@@ -26,8 +26,8 @@ def prepare_sparse_train_set_window(path_to_csv_files, site_freq_path, session_l
                     sessions.append(0)
             list_sessions.append(sessions)
         
-        users.extend([next_user_id] * len(list_sessions))
+        users.extend([user_id] * len(list_sessions))
         rows.extend(list_sessions)
     
-        next_user_id = next_user_id + 1
+        user_id = user_id + 1
     return get_dense_matrix(np.array(rows)), users
